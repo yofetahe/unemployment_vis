@@ -34,7 +34,36 @@
     string val = JsonConvert.SerializeObject(value);
 }
 
-<button onclick="DisplayMap(@val)">Display Graph</button>
-<button onclick="test()">test</button>
+<!-- <div class="form-group">
+            <select  class="form-control" onchange="getMap(this.value)">
+                <option>View Nationwide Unemployment by Year</option>
+                <option>2018</option>
+                <option>2017</option>
+                <option>2016</option>
+                <option>2015</option>
+                <option>2014</option>
+                <option>2013</option>
+                <option>2012</option>
+                <option>2011</option>
+                <option>2010</option>
+                <option>2009</option>
+            </select>
+          </div> -->
+
+<button style="display: none;" onclick="DisplayMap(@val)">Display Graph</button>
 
 <div id="container"></div>
+
+@section scripts{
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                $("button").click();
+            },10);            
+        });
+        
+        function getMap(year){        
+            window.location = "http://localhost:5000/map/"+year;
+        }
+    </script>
+}

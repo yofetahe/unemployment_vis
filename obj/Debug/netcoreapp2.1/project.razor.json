@@ -2696,6 +2696,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Shared\\_NavBar.cshtml",
+      "TargetPath": "Views\\Shared\\_NavBar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"

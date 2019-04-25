@@ -12,7 +12,6 @@ namespace our_project.Controllers
 {
     public class HomeController : Controller
     {
-
         private UnemploymentContext dbContext;
 
         public HomeController(UnemploymentContext context)
@@ -26,11 +25,12 @@ namespace our_project.Controllers
             return View();
         }
         
-        [HttpGet("CountyPerState/{id}")]
-        public IActionResult CountyPerState(int id)
+        [HttpGet("CountyPerState/{State}")]
+        public IActionResult CountyPerState(string State)
         {
+
             var list = dbContext.UnemploymentStats
-            .Where(u => u.StateCode == id)
+            .Where(u => u.State == State)
             .OrderBy(u => u.County)
             .ThenBy(u => u.Year)
             .Take(100)

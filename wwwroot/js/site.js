@@ -56,7 +56,7 @@ function DisplayGraph(listValue){
         responsive: {
           rules: [{
             condition: {
-              maxWidth: 500
+              maxWidth: 4000
             },
             chartOptions: {
               legend: {

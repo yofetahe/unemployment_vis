@@ -27,21 +27,20 @@
         value = value + "|";
     }
     
-    string val = JsonConvert.SerializeObject(value);
+    string val = JsonConvert.SerializeObject(value);    
 }
 
-<button onclick="DisplayGraph(@val)">Display Graph</button>
+<button style="display: none;" onclick="DisplayGraph(@val)">Display Graph</button>
 
 <div id="container"></div>
 
-
+@section scripts{
     <script>
-
         $(document).ready(function() {
-            console.log(val);
-        });    
-        
+            setTimeout(function() {
+                $("button").click();
+            },10);            
+        });
     </script>
+}
 
-
-<div id="container"></div>

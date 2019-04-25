@@ -6,17 +6,22 @@
     <title>our_project</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <!-- <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" /> -->
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/bootstrap-dark.min.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+        <!-- <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" /> -->
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/bootstrap-dark.min.css" />
     </environment>
 </head>
 <body>
+
+    <partial name="_NavBar"/>
+
     <div class="container body-content">
         @RenderBody()
     </div>
@@ -38,7 +43,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="~/js/raphael.js"></script>
         <script src="~/js/jquery.usmap.js"></script>
-        
+     
+
         <script src="~/js/site.js" asp-append-version="true"></script>
 
     </environment>
@@ -58,14 +64,20 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="~/js/raphael.js"></script>
         <script src="~/js/jquery.usmap.js"></script>
-
+      
         <script src="~/js/site.js" asp-append-version="true"></script>
 
     </environment>
     @RenderSection("scripts", required: false)
 
     
-
+@section scripts{
+<script>    
+    function getMap(year){        
+        window.location = "http://localhost:5000/map/"+year;
+    }
+</script>
+}
 
 
 </body>

@@ -26,3 +26,4 @@ C:\Users\yofet\Desktop\Practice-Projects\Coding Dojo Info\4. DotNet Stack\Graph-
 C:\Users\yofet\Desktop\Practice-Projects\Coding Dojo Info\4. DotNet Stack\Graph-Project\our_project\obj\Debug\netcoreapp2.1\our_project.csproj.CopyComplete
 C:\Users\yofet\Desktop\Practice-Projects\Coding Dojo Info\4. DotNet Stack\Graph-Project\our_project\obj\Debug\netcoreapp2.1\Razor\Views\Home\UnemploymentPerState.g.cshtml.cs
 C:\Users\yofet\Desktop\Practice-Projects\Coding Dojo Info\4. DotNet Stack\Graph-Project\our_project\obj\Debug\netcoreapp2.1\Razor\Views\Home\CountyPerState.g.cshtml.cs
+C:\Users\yofet\Desktop\Practice-Projects\Coding Dojo Info\4. DotNet Stack\Graph-Project\our_project\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_NavBar.g.cshtml.cs
