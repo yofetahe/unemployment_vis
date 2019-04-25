@@ -3,24 +3,37 @@
 
 // Write your JavaScript code.
 
-function test(listValue){
+function DisplayGraph(listValue){
+    
+    var info = listValue.split("|");
+    
+    var dataArray = [];
 
-    alert("test");
-    alert(listValue);
+    for(var i = 0, j = 0; i < info.length-1; i += 2, j++){
+        var graphInput = {}
+        graphInput["name"] = info[i];
+        var num = info[i+1].split(",");        
+        var data = [];
+        for(var j = 0; j < num.length-1; j++){
+            data[j] = Number(num[j]);
+        }
+        graphInput["data"] = data;
+        dataArray.push(graphInput);
+    }
 
     Highcharts.chart('container', {
 
         title: {
-          text: 'Solar Employment Growth by Sector, 2010-2016'
+          text: 'Unemployment Rate, 2009-2018'
         },
       
         subtitle: {
-          text: 'Source: thesolarfoundation.com'
+          text: 'Source: governementOffice.com'
         },
       
         yAxis: {
           title: {
-            text: 'Number of Employees'
+            text: 'Unemployment Rate'
           }
         },
         legend: {
@@ -34,28 +47,11 @@ function test(listValue){
             label: {
               connectorAllowed: false
             },
-            pointStart: 2010
+            pointStart: 2009
           }
         },
       
-        series: [
-            {
-            name: 'Installation',
-            data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
-            }, {
-            name: 'Manufacturing',
-            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-            }, {
-            name: 'Sales & Distribution',
-            data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
-            }, {
-            name: 'Project Development',
-            data: [null, null, 7988, 12169, 15112, 22452, 34400, 34227]
-            }, {
-            name: 'Other',
-            data: [12908, 5948, 8105, 11248, 8989, 11816, 18274, 18111]
-            }
-        ],
+        series: dataArray,
       
         responsive: {
           rules: [{
@@ -70,12 +66,81 @@ function test(listValue){
               }
             }
           }]
-        }
-      
-      });
+        }      
+    });
 }
 
+function DisplayMap(listValue){
+    
+    var info = listValue.split("|");
+    console.log(info);
+    var dataArray = [];
 
-$(document).ready(function(){
-    alert("in");
-});
+    for(var i = 0, j = 0; i < info.length-1; i += 2, j++){
+        var graphInput = {}        
+        graphInput["value"] = Number(parseFloat(info[i+1]).toFixed(2));
+        graphInput["code"] = info[i];
+        dataArray.push(graphInput);
+    }
+    console.log(dataArray);
+
+    Highcharts.mapChart('container', {
+
+        chart: {
+          map: 'countries/us/us-all',
+          borderWidth: 1
+        },
+    
+        title: {
+          text: 'Unemployment Rate per State (%)'
+        },
+    
+        exporting: {
+          sourceWidth: 600,
+          sourceHeight: 500
+        },
+    
+        legend: {
+          layout: 'horizontal',
+          borderWidth: 0,
+          backgroundColor: 'rgba(255,255,255,0.85)',
+          floating: true,
+          verticalAlign: 'top',
+          y: 25
+        },
+    
+        mapNavigation: {
+          enabled: true
+        },
+    
+        colorAxis: {
+          min: 1,
+          type: 'logarithmic',
+          minColor: '#EEEEFF',
+          maxColor: '#000022',
+          stops: [
+            [0, '#EFEFFF'],
+            [0.67, '#4444FF'],
+            [1, '#000022']
+          ]
+        },
+    
+        series: [{
+          animation: {
+            duration: 1000
+          },
+          data: dataArray,
+          joinBy: ['postal-code', 'code'],
+          dataLabels: {
+            enabled: true,
+            color: '#FFFFFF',
+            format: '{point.code}'
+          },
+          name: 'Unemployment Rate',
+          tooltip: {
+            pointFormat: '{point.code}: {point.value}%'
+          }
+        }]
+      });    
+}
+

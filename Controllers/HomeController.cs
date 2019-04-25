@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using our_project.Models;
 
+
 namespace our_project.Controllers
 {
     public class HomeController : Controller
@@ -18,19 +19,35 @@ namespace our_project.Controllers
         {
             dbContext = context;
         }
+
+        [HttpGet("")]
+        public IActionResult Index()
+        {
+            return View();
+        }
         
-        [HttpGet("state/{id}")]
-        public IActionResult Index(int id)
+        [HttpGet("CountyPerState/{id}")]
+        public IActionResult CountyPerState(int id)
         {
             var list = dbContext.UnemploymentStats
             .Where(u => u.StateCode == id)
-            .OrderByDescending(u => u.ManPowerForce)
+            .OrderBy(u => u.County)
+            .ThenBy(u => u.Year)
             .Take(100)
             .ToList();
-            System.Console.WriteLine(list.Count);
-
+            
             return View(list);
         }
 
+        [HttpGet("map/{year}")]
+        public IActionResult getMap(int year)
+        {
+            var list = dbContext.UnemploymentStats
+                .Where(u => u.Year == year)
+                .OrderBy(y => y.StateCode)
+                .ToList();
+            
+            return View("UnemploymentPerState", list);
+        }
     }
 }

@@ -1,0 +1,40 @@
+@model List<UnemploymentStat>
+@using Newtonsoft.Json;
+
+@{
+    int index = 0;
+    List<string> CountyList = new List<string>();
+    
+    @foreach(UnemploymentStat i in @Model)
+    {
+        if(!CountyList.Contains(@i.State)){
+            CountyList.Add(@i.State);
+        }
+        index += 1;
+    }
+    
+    string value = "";
+    @foreach(string i in CountyList)
+    {
+        value = value + "" + i + "|";
+        double sum = 0.0, average = 0.0;
+        int counter = 0;
+        @foreach(UnemploymentStat j in @Model)
+        {
+            if(@j.State == i)
+            {
+                sum = sum + j.UnemploymentRate;
+                counter++;                
+            }
+        }
+        average = sum/counter;
+        value = value + "" + average +  "|";
+    }
+    
+    string val = JsonConvert.SerializeObject(value);
+}
+
+<button onclick="DisplayMap(@val)">Display Graph</button>
+<button onclick="test()">test</button>
+
+<div id="container"></div>

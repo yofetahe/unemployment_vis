@@ -1,0 +1,47 @@
+@model List<UnemploymentStat>
+@using Newtonsoft.Json;
+
+@{
+    int index = 0;
+    List<string> CountyList = new List<string>();
+    
+    @foreach(UnemploymentStat i in @Model)
+    {
+        if(!CountyList.Contains(@i.County)){
+            CountyList.Add(@i.County);
+        }
+        index += 1;
+    }
+    
+    string value = "";
+    @foreach(string i in CountyList)
+    {
+        value = value + "" + i + "|";
+        @foreach(UnemploymentStat j in @Model)
+        {
+            if(@j.County == i)
+            {
+                value = value + (j.UnemploymentRate).ToString() + ", ";                
+            }
+        }
+        value = value + "|";
+    }
+    
+    string val = JsonConvert.SerializeObject(value);
+}
+
+<button onclick="DisplayGraph(@val)">Display Graph</button>
+
+<div id="container"></div>
+
+
+    <script>
+
+        $(document).ready(function() {
+            console.log(val);
+        });    
+        
+    </script>
+
+
+<div id="container"></div>

@@ -2686,6 +2686,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Home\\CountyPerState.cshtml",
+      "TargetPath": "Views\\Home\\CountyPerState.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -2698,6 +2703,11 @@
     {
       "FilePath": "Views\\_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\UnemploymentPerState.cshtml",
+      "TargetPath": "Views\\Home\\UnemploymentPerState.cshtml",
       "FileKind": "mvc"
     }
   ]
