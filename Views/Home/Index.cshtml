@@ -16,24 +16,26 @@
     <option>2009</option>
 </select>
 </div> -->
+<partial name="_NavBar"/>
+<div class="container">
+    <div id="map" style="width: 1100px; height: 900px;"></div>
+    <div id="clicked-state"></div>
 
-<div id="map" style="width: 1100px; height: 900px;"></div>
-<div id="clicked-state"></div>
+    @section scripts{
+    <script>
+        $(document).ready(function() {
+            $('#map').usmap({showLabels: true});
+        });
 
-@section scripts{
-<script>
-    $(document).ready(function() {
-        $('#map').usmap({showLabels: true});
-    });
+        $('#map').usmap({
+            click: function(event, data) {
+                window.location = "http://localhost:5000/CountyPerState/"+data.name;
+            }
+        });
 
-    $('#map').usmap({
-        click: function(event, data) {
-            window.location = "http://localhost:5000/CountyPerState/"+data.name;
+        function getMap(year){        
+            window.location = "http://localhost:5000/map/"+year;
         }
-    });
-
-    function getMap(year){        
-        window.location = "http://localhost:5000/map/"+year;
+    </script>
     }
-</script>
-}
+</div>

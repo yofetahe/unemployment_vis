@@ -1,0 +1,23 @@
+<div class="border" id="red">
+    <div class="body">
+        <h2><i>job·less·ness</i></h2>
+        <p><i>noun</i></p>
+        <hr>
+        <p>the state of being unemployed.</p>
+        <p>"public anger over rising joblessness"</p>
+    </div>
+</div>
+
+@section scripts{
+<script>
+    console.log("orange");
+    $(document).ready(function() {
+        $('#red').on('click', function() {
+            window.location = "http://localhost:5000/main"
+            console.log("purple");
+        });
+        
+        
+    });
+</script>
+}

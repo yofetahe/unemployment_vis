@@ -2696,11 +2696,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "Views\\Shared\\_NavBar.cshtml",
-      "TargetPath": "Views\\Shared\\_NavBar.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -2711,8 +2706,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Home\\home.cshtml",
+      "TargetPath": "Views\\Home\\home.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Home\\UnemploymentPerState.cshtml",
       "TargetPath": "Views\\Home\\UnemploymentPerState.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\_NavBar.cshtml",
+      "TargetPath": "Views\\Home\\_NavBar.cshtml",
       "FileKind": "mvc"
     }
   ]

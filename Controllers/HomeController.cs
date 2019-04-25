@@ -18,8 +18,13 @@ namespace our_project.Controllers
         {
             dbContext = context;
         }
+         [HttpGet("")]
+        public IActionResult Home()
+        {
+            return View();
+        }
 
-        [HttpGet("")]
+        [HttpGet("main")]
         public IActionResult Index()
         {
             return View();
