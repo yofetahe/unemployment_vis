@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using our_project.Models;
 
 namespace our_project.Controllers
@@ -18,12 +19,16 @@ namespace our_project.Controllers
             dbContext = context;
         }
         
-        [HttpGet("")]
-        public IActionResult Index()
+        [HttpGet("state/{id}")]
+        public IActionResult Index(int id)
         {
-            List<UnemploymentStat> list = dbContext.UnemploymentStats.ToList();
+            var list = dbContext.UnemploymentStats
+            .Where(u => u.StateCode == id)
+            .OrderByDescending(u => u.ManPowerForce)
+            .Take(100)
+            .ToList();
             System.Console.WriteLine(list.Count);
-            
+
             return View(list);
         }
 

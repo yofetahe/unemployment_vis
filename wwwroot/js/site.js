@@ -3,9 +3,10 @@
 
 // Write your JavaScript code.
 
-function test(value){
+function test(listValue){
+
     alert("test");
-    alert(value);
+    alert(listValue);
 
     Highcharts.chart('container', {
 

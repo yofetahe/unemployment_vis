@@ -1,16 +1,41 @@
 ﻿@model List<UnemploymentStat>
+@using Newtonsoft.Json;
 
 @{
-    string[] list = {};
+    List<List<string>> list = new List<List<string>>();
+    int index = 0;
+    List<string> CountyList = new List<string>();
     
-    foreach(var info in @Model)
+    @foreach(UnemploymentStat i in @Model)
     {
-
+        if(!CountyList.Contains(@i.County)){
+            CountyList.Add(@i.County);
+        }
+        index += 1;
     }
     
-    <button onclick="test(1)">test</button>
+    @foreach(string i in CountyList)
+    {
+        List<string> InnerList = new List<string>();
+        @foreach(UnemploymentStat j in @Model)
+        {
+            if(@j.County == i)
+            {
+                InnerList.Add(j.County);
+                InnerList.Add((j.UnemploymentRate).ToString());
+            }
+        }
+        list.Add(InnerList);
+    }
+
+   
+
+    
+    var val = JsonConvert.SerializeObject(list);
+    
 }
 
+<button onclick="test(@val)">Add</button>
 
 <div id="container"></div>
 
