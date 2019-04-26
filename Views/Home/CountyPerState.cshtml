@@ -8,7 +8,7 @@
     @foreach(UnemploymentStat i in @Model)
     {
         if(!CountyList.Contains(@i.County)){
-            CountyList.Add(@i.County);
+            CountyList.Add(@i.County); 
         }
         index += 1;
     }

@@ -14,13 +14,13 @@ function DisplayGraph(listValue){
         graphInput["name"] = info[i];
         var num = info[i+1].split(",");        
         var data = [];
-        for(var j = 0; j < num.length-1; j++){
+        for(var j = 0, x = 0; j < num.length-1; j++, x++){            
             data[j] = Number(num[j]);
         }
         graphInput["data"] = data;
         dataArray.push(graphInput);
     }
-
+    console.log(dataArray);
     Highcharts.chart('container', {
 
         title: {
